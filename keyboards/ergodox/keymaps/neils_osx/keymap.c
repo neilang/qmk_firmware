@@ -24,10 +24,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      |LCtrl | LALT | LGui | LGui | Space|                                       | Space| Left | Down |  Up  | Right|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |CTRL^C| CUT  |       | PWR  | ~L1  |
+ *                                        |CTRL^C| CUT  |       | PWR  |  ~L1  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | COPY |       | PgUp |        |      |
- *                                 | Undo | ~/L1 |------|       |------|  Enter |Space |
+ *                                 | Undo | ~/L1 |------|       |------|  SPACE |Enter |
  *                                 |      |      | PASTE|       | PgDn |        |      |
  *                                 `--------------------'       `----------------------'
  */
@@ -51,17 +51,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               KC_SPC,    KC_LEFT,  KC_DOWN,KC_UP,  KC_RGHT,
              KC_PWR,        KC_FN1,
              KC_PGUP,
-             KC_PGDN,KC_ENT, KC_SPC
+             KC_PGDN, KC_SPC, KC_ENT
     ),
 /* Keymap 1: Symbol Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   !  |   @  |   {  |   }  |   |  |      |           |      |   Up |   7  |   8  |   9  |   *  |   F12  |
+ * |        |   !  |   @  |   {  |   }  |   |  | M1   |           |      |   Up |   7  |   8  |   9  |   *  |   F12  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   #  |   $  |   (  |   )  |   `  |------|           |------| Down |   4  |   5  |   6  |   +  |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------| M2   |           |      |------+------+------+------+------+--------|
  * |        |   %  |   ^  |   [  |   ]  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |    . |   0  |   =  |      |
@@ -78,9 +78,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMB] = KEYMAP(
        // left hand
        KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
-       KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,KC_TRNS,
+       KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,M(1),
        KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
-       KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
+       KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,M(2),
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                        KC_TRNS,KC_TRNS,
                                                KC_TRNS,
@@ -153,6 +153,16 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
           unregister_code(KC_RSFT);
         }
         break;
+        case 1:
+        if (record->event.pressed) {
+          return MACRO( T(J), T(K), T(L), T(U),  T(A), T(J), T(T), D(LSFT), T(AT), U(LSFT), T(T), T(M), T(A), T(L), T(U), T(DOT), T(C), T(SCLN), T(M), END );
+        }
+        case 2:
+        if (record->event.pressed) {
+          return MACRO( T(J), T(K), T(L), T(U),  T(DOT),  T(A), T(J), T(T), D(LSFT), T(AT), U(LSFT), T(I), T(J), T(L), T(M), T(K), T(U), T(B), T(DOT), T(K), T(G), T(I), T(DOT), T(A), T(I), END);
+        }
+        break;
+
       }
     return MACRO_NONE;
 };
