@@ -27,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |CTRL^C| CUT  |       | PWR  |  ~L1  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | COPY |       | PgUp |        |      |
- *                                 |Space | ~/L1 |------|       |------|  Undo  |Enter |
+ *                                 | Undo | ~/L1 |------|       |------|  Undo  |Enter |
  *                                 |      |      | PASTE|       | PgDn |        |      |
  *                                 `--------------------'       `----------------------'
  */
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         CTL_T(KC_ESC),KC_LALT,KC_LGUI,        KC_LGUI, KC_LGUI,
                                               LCTL(KC_C),  LGUI(KC_X),
                                                               LGUI(KC_C),
-                                               KC_SPC,LT(SYMB,KC_GRV),LGUI(KC_V),
+                                               LGUI(KC_Z),LT(SYMB,KC_GRV),LGUI(KC_V),
         // right hand
              KC_EQL,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,             KC_MINS,
              KC_DELT,       KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,             KC_BSLS,
