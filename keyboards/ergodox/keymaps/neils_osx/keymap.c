@@ -1,6 +1,3 @@
-// Netable differences vs. the default firmware for the ErgoDox EZ:
-// 1. The Cmd key is now on the right side, making Cmd+Space easier.
-// 2. The media keys work on OSX (But not on Windows).
 #include "ergodox.h"
 #include "debug.h"
 #include "action_layer.h"
@@ -13,7 +10,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   ESC  |   1  |   2  |   3  |   4  |   5  | Home |           |   =  |   6  |   7  |   8  |   9  |   0  |   -    |
+ * |   `~   |   1  |   2  |   3  |   4  |   5  |  6   |           |   7  |   8  |   9  |   0  |   -  |   =  | BkSp   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |  END |           |  DEL |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -21,13 +18,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|   [  |           |   ]  |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  /   | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     |LCtrl | LALT | LGui | LGui | LGui |                                       | Space| Left | Down |  Up  | Right|
+ *   |LCtrl | LALT | LGui | LGui | LGui |                                       | Space| Left | Down |  Up  | Right|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |CTRL^C| CUT  |       | PWR  |  F11  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | COPY |       | PgUp |        |      |
- *                                 | Undo | ~/L1 |------|       |------|  Undo  |Enter |
+ *                                 | Undo | ~/L1 |------|       |------|  ESC   |Enter |
  *                                 |      |      | PASTE|       | PgDn |        |      |
  *                                 `--------------------'       `----------------------'
  */
@@ -35,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_ESC,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_HOME,
+        KC_GRV,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_6,
         KC_TAB,         KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   KC_END,
         KC_BSPC,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSFT,        KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,   KC_LBRC,
@@ -44,14 +41,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                               LGUI(KC_C),
                                                LGUI(KC_Z),LT(SYMB,KC_GRV),LGUI(KC_V),
         // right hand
-             KC_EQL,     KC_6,   KC_7,   KC_8,   KC_9,   KC_0,             KC_MINS,
+             KC_7,   KC_8,   KC_9,   KC_0, KC_MINS, KC_EQL, KC_BSPC,
              KC_DELT,       KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,             KC_BSLS,
                           KC_H,   KC_J,   KC_K,   KC_L,   LT(MDIA, KC_SCLN),KC_QUOT,
              KC_RBRC,KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,   KC_RSFT,
                               KC_SPC,    KC_LEFT,  KC_DOWN,KC_UP,  KC_RGHT,
              KC_POWER,        KC_F11,
              KC_PGUP,
-             KC_PGDN, LGUI(KC_Z), KC_ENT
+             KC_PGDN, KC_ESC, KC_ENT
     ),
 /* Keymap 1: Symbol Layer
  *
