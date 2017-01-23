@@ -1281,5 +1281,5 @@ In that model you would emulate the input, and expect a certain output from the 
 
 # Building Neil
 
-    qmk_firmware/keyboards/ergodox
+    cd qmk_firmware/keyboards/ergodox
     make ez-neils_osx
