@@ -21,10 +21,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |LCtrl | LALT | LGui | LGui | LGui |                                       | Space| Left | Down |  Up  | Right|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |CTRL^C| CUT  |       | PWR  |  F11  |
+ *                                        |CTRL^C| ~/L1 |       | PWR  |  F11  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | COPY |       | PgUp |        |      |
- *                                 | Undo | ~/L1 |------|       |------| L2/ESC |Enter |
+ *                                 | Esc  | Undo |------|       |------| L2/ESC |Enter |
  *                                 |      |      | PASTE|       | PgDn |        |      |
  *                                 `--------------------'       `----------------------'
  */
@@ -37,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BSPC,        KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSFT,        KC_Z,  KC_X,   KC_C,   KC_V,   KC_B,   KC_LBRC,
         CTL_T(KC_ESC),KC_LALT,KC_LGUI,        KC_LGUI, KC_LGUI,
-                                              LCTL(KC_C),  LGUI(KC_X),
+                                              LCTL(KC_C),  LT(SYMB,KC_GRV),
                                                               LGUI(KC_C),
-                                               LGUI(KC_Z),LT(SYMB,KC_GRV),LGUI(KC_V),
+                                               KC_ESC,LGUI(KC_Z),LGUI(KC_V),
         // right hand
              KC_7,   KC_8,   KC_9,   KC_0, KC_MINS, KC_EQL, KC_BSPC,
              KC_RPRN,       KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,             KC_BSLS,
